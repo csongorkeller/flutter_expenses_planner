@@ -20,10 +20,22 @@ class HomePage extends StatelessWidget {
         title: Text('Personal expenses'),
         backgroundColor: Colors.red,
       ),
-      body: Center(
-        child: Text('This is my body'),
+      body: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            height: 100,
+            child: Card(
+              color: Colors.red[100],
+              child: Text('CHART'),
+              elevation: 5,
+            ),
+          ),
+          Card(
+            child: Text('LIST OF TX'),
+          )
+        ],
       ),
-      
     );
   }
 }
