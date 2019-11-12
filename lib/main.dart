@@ -49,13 +49,19 @@ class HomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Column(                                             //transform the list of transactions to list of cards that outputs transactions
-              children: transaction.map((singleTransaction) { // we have to list the single transactions from all transactions
+          Column(
+              children: transaction.map((singleTransaction) {
             return Card(
-              child: Text(singleTransaction.title),           //we're listing the title of the single transaction
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: Text(singleTransaction.amount
+                        .toString()), //have to be converted into String, since Text only accept String instead of double
+                  ),
+                ],
+              ),
             );
-          }).toList()                                         //transaction --> list of widgets by using .map()
-              )
+          }).toList())
         ],
       ),
     );
