@@ -1,6 +1,9 @@
-import './transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import './transaction.dart';
+import './constants.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,10 +32,20 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('this is a title'),
+        title: Text('Spendee'),
+        backgroundColor: brandRaisinBlack,
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: brandRaisinBlack,
+          child: Column(
+            children: <Widget>[],
+          ),
+        ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
             width: double.infinity,
@@ -43,10 +56,73 @@ class MyHomePage extends StatelessWidget {
               child: Text('CHART'),
             ),
           ),
-          Column( //Hardcoded transactions are transformed from a list of transactions to a list of cards
-            children: transactions.map((singleTransaction) { //singleTransaction is just a pointer
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                    cursorColor: brandRaisinBlack,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                    cursorColor: brandRaisinBlack,
+                  ),
+                  FlatButton(
+                    child: Text('Add transaction'),
+                    color: primaryColor.withOpacity(0.5),
+                    textColor: brandRaisinBlack,
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
+          ),
+          Column(
+            //Hardcoded transactions are transformed from a list of transactions to a list of cards
+            children: transactions.map((singleTransaction) {
+              //singleTransaction is just a pointer
               return Card(
-                child: Text(singleTransaction.title),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                        color: brandRaisinBlack,
+                        width: 2,
+                      )),
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        '\$ ' '${singleTransaction.amount}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: brandRaisinBlack),
+                      ), //Text requires String
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          '${singleTransaction.title}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: brandRegistrationBlack),
+                        ),
+                        Text(
+                          DateFormat.yMMMd().format(singleTransaction.date),
+                          style: TextStyle(color: primaryColor, fontSize: 10),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               );
             }).toList(),
           )
