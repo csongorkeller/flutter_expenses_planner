@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import './transaction.dart';
-import './constants.dart';
+import './utils/constants.dart';
+import './widgets/user_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,15 +17,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-        id: 't1', title: 'New shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2',
-        title: 'Weekly Groceries',
-        amount: 16.54,
-        date: DateTime.now())
-  ];
+//User input
+/* String titleInput;  //we store here the user input typed 
+String amountInput; */
 
   @override
   Widget build(BuildContext context) {
@@ -56,76 +49,7 @@ class MyHomePage extends StatelessWidget {
               child: Text('CHART'),
             ),
           ),
-          Card(
-            elevation: 5,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Title'),
-                    cursorColor: brandRaisinBlack,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Amount'),
-                    cursorColor: brandRaisinBlack,
-                  ),
-                  FlatButton(
-                    child: Text('Add transaction'),
-                    color: primaryColor.withOpacity(0.5),
-                    textColor: brandRaisinBlack,
-                    onPressed: () {},
-                  )
-                ],
-              ),
-            ),
-          ),
-          Column(
-            //Hardcoded transactions are transformed from a list of transactions to a list of cards
-            children: transactions.map((singleTransaction) {
-              //singleTransaction is just a pointer
-              return Card(
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: brandRaisinBlack,
-                        width: 2,
-                      )),
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        '\$ ' '${singleTransaction.amount}',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: brandRaisinBlack),
-                      ), //Text requires String
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          '${singleTransaction.title}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: brandRegistrationBlack),
-                        ),
-                        Text(
-                          DateFormat.yMMMd().format(singleTransaction.date),
-                          style: TextStyle(color: primaryColor, fontSize: 10),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              );
-            }).toList(),
-          )
+          UserTransactions()
         ],
       ),
     );
