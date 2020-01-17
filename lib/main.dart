@@ -36,21 +36,23 @@ String amountInput; */
           ),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            height: 30,
-            child: Card(
-              color: Colors.blue,
-              elevation: 5,
-              child: Text('CHART'),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              height: 30,
+              child: Card(
+                color: Colors.blue,
+                elevation: 5,
+                child: Text('CHART'),
+              ),
             ),
-          ),
-          UserTransactions()
-        ],
+            UserTransactions()
+          ],
+        ),
       ),
     );
   }
