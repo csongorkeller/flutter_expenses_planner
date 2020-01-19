@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import '../models/transaction.dart';
-import '../utils/constants.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
@@ -18,43 +18,49 @@ class TransactionList extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  margin: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 15,
+                  ),
                   decoration: BoxDecoration(
-                      border: Border.all(
-                    color: brandRaisinBlack,
-                    width: 2,
-                  )),
+                    border: Border.all(
+                      color: Colors.purple,
+                      width: 2,
+                    ),
+                  ),
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    '\$ ' '${transactions[index].amount.toStringAsFixed(2)}', //only show 2 decimals
+                    '\$${transactions[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: brandRaisinBlack),
-                  ), //Text requires String
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.purple,
+                    ),
+                  ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '${transactions[index].title}',
+                      transactions[index].title,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: brandRegistrationBlack),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Text(
                       DateFormat.yMMMd().format(transactions[index].date),
-                      style: TextStyle(color: primaryColor, fontSize: 10),
-                    )
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           );
         },
         itemCount: transactions.length,
-        //Hardcoded transactions are transformed from a list of transactions to a list of cards
       ),
     );
   }
