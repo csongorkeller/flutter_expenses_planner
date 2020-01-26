@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Personal expenses',
       home: MyHomePage(),
     );
   }
@@ -26,7 +26,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
+    /* Transaction(
       id: 't1',
       title: 'New Shoes',
       amount: 69.99,
@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
       title: 'Weekly Groceries',
       amount: 16.53,
       date: DateTime.now(),
-    ),
+    ), */
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
@@ -71,13 +71,21 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: brandRaisinBlack,
-        title: Text('Flutter App'),
+        title: Text('Personal expenses'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () => _startAddNewTransaction(context),
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: brandRaisinBlack,
+          child: Column(
+            children: <Widget>[],
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
