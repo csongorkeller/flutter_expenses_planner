@@ -1,4 +1,4 @@
-# expenses_planner
+# Simple Flutter expenses planner app for iOS and Android
 
 Simple project to manage expenses in FLutter
 Feautres:
