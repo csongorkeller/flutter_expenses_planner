@@ -7,6 +7,7 @@ Feautres:
   3. Basic graph to show transaction details per day
   
 ![Homescreen UI](https://github.com/csongorkeller/flutter_expenses_planner/blob/develop/assets/images/image1.png?raw=true "Homescreen UI")
+![Add-transaction UI](https://github.com/csongorkeller/flutter_expenses_planner/blob/develop/assets/images/image2.png?raw=true "Add-transaction UI")
 
 ## Getting Started
 
