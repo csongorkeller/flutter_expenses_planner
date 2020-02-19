@@ -5,6 +5,8 @@ Feautres:
   1. Transaction details UI to show recent transactions for the past 7 days
   2. Ability to add transactions for the past 90 days
   3. Basic graph to show transaction details per day
+  
+![Homescreen UI](https://github.com/csongorkeller/flutter_expenses_planner/blob/develop/assets/images/image1.png?raw=true "Homescreen UI")
 
 ## Getting Started
 
